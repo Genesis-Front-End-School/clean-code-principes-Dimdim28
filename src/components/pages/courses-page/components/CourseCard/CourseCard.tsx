@@ -44,11 +44,9 @@ const CourseCard: React.FC<CourseCardProps> = ({
     setIsPlaying(true);
     if (video) {
       const hls = new Hls();
-      hls.on(Hls.Events.ERROR, function (event, data) {
+      hls.on(Hls.Events.ERROR, function (_, data) {
         const errorFatal = data.fatal;
-        if (errorFatal) {
-          setIsErrorOccured(true);
-        }
+        if (errorFatal) setIsErrorOccured(true);
       });
       hls.loadSource(videoLink);
       hls.attachMedia(video);
@@ -112,7 +110,9 @@ const CourseCard: React.FC<CourseCardProps> = ({
               defaultValue={rating}
               precision={0.5}
             />
-            {tags.length === 1 && <p className={styles.tag}>{tags[0]}</p>}
+            {Array.isArray(tags) && tags.length === 1 && (
+              <p className={styles.tag}>{tags[0]}</p>
+            )}
           </div>
 
           {tags?.length > 1 && (

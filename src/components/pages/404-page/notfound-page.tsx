@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import styles from './notfound-page.module.scss';
 
-const NotFoundPage = () => {
+const NotFoundPage: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <h1>Page not found</h1>
