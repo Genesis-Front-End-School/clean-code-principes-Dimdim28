@@ -1,6 +1,6 @@
 setupFilesAfterEnv: ['<rootDir>/jest.setup.js'];
 
-module.exports = {
+export default {
   collectCoverageFrom: [
     '**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
