@@ -2,16 +2,11 @@ import { NextPage } from 'next';
 
 import NotFoundPage from '@/components/pages/404-page';
 
+import styles from './404.module.scss';
+
 const Details: NextPage = () => {
   return (
-    <div
-      className="main"
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
+    <div className={styles.main}>
       <NotFoundPage />
     </div>
   );
