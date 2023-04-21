@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'hooks/appHooks';
 
 import Error from '@/components/common/Error';
 import Preloader from '@/components/common/Preloader';
+import { useAppDispatch, useAppSelector } from '@/hooks/appHooks';
 import { fetchCourses } from '@/redux/courses/asyncActions';
 import {
   selectCourses,

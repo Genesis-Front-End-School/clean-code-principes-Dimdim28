@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Rating } from '@mui/material';
-import { useAppDispatch, useAppSelector } from 'hooks/appHooks';
 import { useRouter } from 'next/router';
 
 import Error from '@/components/common/Error';
 import Preloader from '@/components/common/Preloader';
+import { useAppDispatch, useAppSelector } from '@/hooks/appHooks';
 import { fetchLessons } from '@/redux/lessons/asyncActions';
 import {
   selectCourseInfo,
