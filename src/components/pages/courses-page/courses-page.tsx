@@ -45,40 +45,18 @@ const CoursesPage = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.cards}>
-        {sortedCourses.map(
-          ({
-            id,
-            title,
-            tags,
-            launchDate,
-            status,
-            description,
-            duration,
-            lessonsCount,
-            previewImageLink,
-            rating,
-            meta,
-          }) => (
-            <CourseCard
-              key={id}
-              id={id}
-              title={title}
-              description={description}
-              image={previewImageLink}
-              lessonsCount={lessonsCount}
-              skills={meta.skills}
-              rating={rating}
-              videoLink={meta.courseVideoPreview?.link || ''}
-              videoPreviewImage={
-                meta.courseVideoPreview?.previewImageLink || ''
-              }
-              tags={tags}
-              duration={duration}
-              launchDate={launchDate}
-              status={status}
-            />
-          ),
-        )}
+        {sortedCourses.map(course => (
+          <CourseCard
+            key={course.id}
+            {...course}
+            image={course.previewImageLink}
+            skills={course.meta.skills}
+            videoLink={course.meta.courseVideoPreview?.link || ''}
+            videoPreviewImage={
+              course.meta.courseVideoPreview?.previewImageLink || ''
+            }
+          />
+        ))}
       </div>
       <Pagination
         currentPage={page}
