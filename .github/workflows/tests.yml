@@ -1,7 +1,7 @@
 name: Run All Tests
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, oop]
   pull_request:
     branches: [main, master]
 jobs:
