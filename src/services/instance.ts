@@ -1,7 +1,11 @@
 import axios, { AxiosInstance } from 'axios';
 
-export class SingletonInstance{
+export class SingletonInstance {
   private static instance: AxiosInstance;
+
+  constructor() {
+    throw new Error('use a static getInstance() method')
+   }
 
   public static getInstance(): AxiosInstance {
     if (!this.instance) this.instance = axios.create({
@@ -13,7 +17,7 @@ export class SingletonInstance{
     });
 
     return this.instance;
-}
+  }
 }
 
 

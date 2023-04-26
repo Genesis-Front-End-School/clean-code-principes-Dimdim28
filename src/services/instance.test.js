@@ -6,4 +6,8 @@ describe('Singleton client instance', ()=>{
         const instanceTwo =  SingletonInstance.getInstance();
         expect(instanceOne).toEqual(instanceTwo);
     })
+    it('must not allow us to use new for the creating instances',()=>{
+        const attemptToCreate = () => {new SingletonInstance()};
+        expect(attemptToCreate).toThrow('use a static getInstance() method');
+    })
 })
