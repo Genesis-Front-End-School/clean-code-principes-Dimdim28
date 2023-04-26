@@ -4,6 +4,18 @@ export enum Status {
   ERROR = 'error',
 }
 
+export type CourseMeta = {
+  slug: string;
+  skills?: string[];
+  fullCourseProductId?: string;
+  fullCourseProductFamily?: string;
+  courseVideoPreview?: {
+    link: string;
+    duration: number;
+    previewImageLink: string;
+  };
+};
+
 export type Course = {
   id: string;
   title: string;
@@ -16,15 +28,5 @@ export type Course = {
   containsLockedLessons: true;
   previewImageLink: string;
   rating: number;
-  meta: {
-    slug: string;
-    skills?: string[];
-    fullCourseProductId?: string;
-    fullCourseProductFamily?: string;
-    courseVideoPreview?: {
-      link: string;
-      duration: number;
-      previewImageLink: string;
-    };
-  };
+  meta: CourseMeta;
 };
