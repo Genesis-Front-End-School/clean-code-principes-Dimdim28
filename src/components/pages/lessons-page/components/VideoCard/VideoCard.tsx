@@ -30,11 +30,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, poster }) => {
   }, [videoRef, src, getCurrentTime]);
 
   useEffect(() => {
-    const handleKeyDown = (event: {
-      ctrlKey: any;
-      key: string;
-      preventDefault: () => void;
-    }) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       const current = videoRef.current;
       if (event.key === '0' && current?.playbackRate) {
         event.preventDefault();
