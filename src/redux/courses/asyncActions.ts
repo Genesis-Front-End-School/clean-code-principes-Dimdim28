@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import axiosInstance from '@/services/instance';
+import axiosInstance from "../../services/instance";
 
 import { Course } from '../types';
 
