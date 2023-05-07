@@ -25,7 +25,7 @@ export type Course = {
   description: string;
   duration: number;
   lessonsCount: number;
-  containsLockedLessons: true;
+  containsLockedLessons: boolean;
   previewImageLink: string;
   rating: number;
   meta: CourseMeta;

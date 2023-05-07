@@ -1,9 +1,9 @@
 name: Run All Tests
 on:
   push:
-    branches: [main, master, oop, test]
+    branches: [main, master, oop, tests]
   pull_request:
-    branches: [main, master, test]
+    branches: [main, master, tests]
 jobs:
   test:
     timeout-minutes: 60
