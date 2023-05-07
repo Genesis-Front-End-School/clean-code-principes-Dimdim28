@@ -28,12 +28,73 @@ const CourseMock = {
     meta: CourseMetaMock,
 };
 
+const CoursesSliceStateMock = {
+    status: Status.SUCCESS,
+    courses: [CourseMock],
+    currentPage: 1,
+}
+
+const FetchCourseResponseMock = {
+    courses: [CourseMock],
+}
+
+const LessonMock = {
+    id: "string",
+    title: "string",
+    duration: 666,
+    order: 10,
+    type: "string",
+    status: "string",
+    link: "string",
+    previewImageLink: "string",
+    meta: null,
+};
+
+const LessonsMock = {
+    ...CourseMock,
+    lessons: [LessonMock]
+};
+
+const LessonsSliceStateMock = {
+    status: Status.LOADING,
+    lessons: [LessonMock],
+    courseInfo: CourseMock,
+}
+
+const FetchLessonsParamsMock = {
+    id: "id"
+}
+
 function courseMetaTestFunction(CourseMetaParam: CourseMeta) {
     return CourseMetaParam;
 }
 
 function CourseTestFunction(CourseParam: Course) {
     return CourseParam;
+}
+
+function CoursesSliceStateTestFunction(CoursesSliceStateParam: CoursesSliceState) {
+    return CoursesSliceStateParam;
+}
+
+function FetchCourseResponseTestFunction(FetchCourseResponseParam: FetchCourseResponse) {
+    return FetchCourseResponseParam;
+}
+
+function LessonTestFunction(LessonParam: Lesson) {
+    return LessonParam;
+}
+
+function LessonsTestFunction(LessonsParam: Lessons) {
+    return LessonsParam;
+}
+
+function LessonsSliceStateTestFunction(LessonsSliceStateParam: LessonsSliceState) {
+    return LessonsSliceStateParam;
+}
+
+function FetchLessonsParamsTestFunction(FetchLessonsParamsParam: FetchLessonsParams) {
+    return FetchLessonsParamsParam;
 }
 
 describe('file in the redux directory with all global types', () => {
@@ -47,34 +108,31 @@ describe('file in the redux directory with all global types', () => {
 
         const CourseResult: Course = CourseTestFunction(CourseMock);
         expect(CourseResult).toBeDefined();
-
-        const Course2 = {} as Course;
-        expect(Course2).toBeDefined();
     })
 })
 
 describe('file for exporting course slice types', () => {
     it('has all interfaces', () => {
-        const CoursesSliceState2 = {} as CoursesSliceState;
-        expect(CoursesSliceState2).toBeDefined();
+        const CoursesSliceStateResult: CoursesSliceState = CoursesSliceStateTestFunction(CoursesSliceStateMock);
+        expect(CoursesSliceStateResult).toBeDefined();
 
-        const FetchCourseResponse2 = {} as FetchCourseResponse;
-        expect(FetchCourseResponse2).toBeDefined();
+        const FetchCourseResponseResult: FetchCourseResponse = FetchCourseResponseTestFunction(FetchCourseResponseMock);
+        expect(FetchCourseResponseResult).toBeDefined();
     })
 })
 
 describe('file for exporting course slice types', () => {
     it('has all interfaces and types', () => {
-        const Lesson2 = {} as Lesson;
-        expect(Lesson2).toBeDefined();
+        const LessonResult: Lesson = LessonTestFunction(LessonMock);
+        expect(LessonResult).toBeDefined();
 
-        const Lessons = {} as Lessons;
-        expect(Lessons).toBeDefined();
+        const LessonsResult: Lessons = LessonsTestFunction(LessonsMock);
+        expect(LessonsResult).toBeDefined();
 
-        const LessonsSliceState2 = {} as LessonsSliceState;
-        expect(LessonsSliceState2).toBeDefined();
+        const LessonsSliceStateResult: LessonsSliceState = LessonsSliceStateTestFunction(LessonsSliceStateMock);
+        expect(LessonsSliceStateResult).toBeDefined();
 
-        const FetchLessonsParams2 = {} as FetchLessonsParams;
-        expect(FetchLessonsParams2).toBeDefined();
+        const FetchLessonsParamsResult: FetchLessonsParams = FetchLessonsParamsTestFunction(FetchLessonsParamsMock);
+        expect(FetchLessonsParamsResult).toBeDefined();
     })
 })
