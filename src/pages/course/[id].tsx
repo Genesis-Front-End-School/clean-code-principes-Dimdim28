@@ -4,7 +4,7 @@ import LessonsPage from '@/components/pages/lessons-page';
 
 const Details: NextPage = () => {
   return (
-    <main className="main">
+    <main className="main" role='wrapper'>
       <LessonsPage />
     </main>
   );

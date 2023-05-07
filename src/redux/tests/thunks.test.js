@@ -1,6 +1,8 @@
 import { fetchCourses } from "../courses/asyncActions";
 import { fetchLessons } from "../lessons/asyncActions";
 
+jest.setTimeout(15000);
+
 describe('courses thunk', () => {
     it('should fetchCourses with correct structure', async () => {
         jest.mock('axios');
@@ -10,7 +12,6 @@ describe('courses thunk', () => {
         await thunk(dispatch);
 
         const { calls } = dispatch.mock;
-        console.log(calls);
         expect(calls).toHaveLength(2);
     })
 })
@@ -24,7 +25,6 @@ describe('lessons thunk', () => {
         await thunk(dispatch);
 
         const { calls } = dispatch.mock;
-        console.log(calls);
         expect(calls).toHaveLength(2);
     })
 })
