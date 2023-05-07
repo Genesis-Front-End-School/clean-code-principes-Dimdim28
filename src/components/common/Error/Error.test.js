@@ -8,7 +8,7 @@ describe('Error component', () => {
   beforeEach(() => {
     render(<Error text={'error text'} />);
   });
-  it('renders with message', () => {
+  it('renders with right message', () => {
     expect(screen.getByText('error text')).toBeInTheDocument();
     expect(screen.getByText('Go home')).toBeInTheDocument();
   });

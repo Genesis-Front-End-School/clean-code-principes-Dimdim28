@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/lib/component"
-, "index.test.ts"  ],
+, "index.test.ts", "src/redux/index.test.js"  ],
   "exclude": [
     "node_modules"
   ]
