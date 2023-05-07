@@ -39,4 +39,9 @@ export default {
     '/node_modules/',
     '^.+\\.module\\.(css|sass|scss)$',
   ],
+  modulePathIgnorePatterns: [
+    '_app.tsx',
+    '_document.tsx',
+    '/pages/course/[id].tsx',
+]
 };
