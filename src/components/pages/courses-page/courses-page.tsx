@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-import Error from '@/components/common/Error';
-import Preloader from '@/components/common/Preloader';
-import { useAppDispatch, useAppSelector } from '@/hooks/appHooks';
-import { fetchCourses } from '@/redux/courses/asyncActions';
+import Error from "../../common/Error";
+import Preloader from '../../common/Preloader';
+import { useAppDispatch, useAppSelector } from '../../../hooks/appHooks';
+import { fetchCourses } from '../../../redux/courses/asyncActions';
 import {
   selectCourses,
   selectCurrentPage,
   selectError,
   selectStatus,
-} from '@/redux/courses/selectors';
-import { setCurrentPage } from '@/redux/courses/slice';
+} from '../../../redux/courses/selectors';
+import { setCurrentPage } from '../../../redux/courses/slice';
 
 import CourseCard from './components/CourseCard';
 import Pagination from './components/Pagination';
