@@ -42,6 +42,9 @@ export default {
   modulePathIgnorePatterns: [
     '_app.tsx',
     '_document.tsx',
-    '/pages/course/[id].tsx',
+    '/src/pages/course',
+    '.prettierrc.js',
+    'jest.setup.js',
+    'index.tsx',
 ]
 };
