@@ -1,39 +1,38 @@
-.wrapper {
-  width: 240px;
-  font-size: 20px;
-  overflow: hidden;
-  cursor: pointer;
-  .image {
-    width: 240px;
-  }
-}
-
-.locked {
-  width: 240px;
-  font-size: 20px;
-  overflow: hidden;
-  opacity: 0.5;
-  pointer-events: none;
-  .image {
-    width: 240px;
-  }
-}
-
+.wrapper,
+.locked,
 .active {
   width: 240px;
   font-size: 20px;
   overflow: hidden;
-  box-shadow: 0 0 10px blue;
+
   .image {
     width: 240px;
   }
+
+  text-align: center;
+}
+
+.wrapper {
+  cursor: pointer;
+  box-shadow: 0 0 10px white;
+}
+
+.locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.active {
+  box-shadow: 0 0 10px blue;
 }
 
 @media (max-width: 1440px) {
+
   .wrapper,
   .active,
   .locked {
     width: 200px;
+
     .image {
       width: 200px;
     }
@@ -41,10 +40,12 @@
 }
 
 @media (max-width: 1024px) {
+
   .wrapper,
   .active,
   .locked {
     width: 300px;
+
     .image {
       width: 300px;
     }
@@ -52,11 +53,13 @@
 }
 
 @media (max-width: 768px) {
+
   .wrapper,
   .active,
   .locked {
     width: 100%;
     text-align: center;
+
     .image {
       width: 100%;
     }

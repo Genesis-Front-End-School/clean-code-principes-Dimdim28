@@ -2,61 +2,66 @@
   width: 100%;
   height: 100%;
   font-size: 20px;
+  background-color: rgb(218, 218, 218);
+}
 
-  .courseInfo {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #1976d2;
-    color: white;
-    padding: 5px 20px;
-    font-weight: 600;
-    height: 40px;
-    .back {
-      cursor: pointer;
-    }
+.darkWrapper {
+  background-color: black;
+}
+
+.courseInfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1976d2;
+  color: white;
+  padding: 5px 20px;
+  font-weight: 600;
+  height: 40px;
+
+  .back {
+    cursor: pointer;
   }
-  .courseContent {
-    height: calc(100% - 40px);
-    width: 100%;
+}
+
+.courseContent {
+  height: calc(100% - 40px);
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  overflow-y: auto;
+
+  .lessons {
+    width: 540px;
     display: flex;
-    align-items: start;
     justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
     overflow-y: auto;
-    .lessons {
-      width: 540px;
-      display: flex;
-      justify-content: space-between;
-      flex-direction: row;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      padding: 10px;
-      overflow-y: auto;
-      height: 100%;
-      gap: 20px;
-    }
+    height: 100%;
+    gap: 20px;
   }
 }
 
 @media (max-width: 1440px) {
-  .wrapper {
-    .courseContent {
-      .lessons {
-        width: 460px;
-      }
+  .courseContent {
+    .lessons {
+      width: 460px;
     }
   }
 }
 
 @media (max-width: 1024px) {
-  .wrapper {
-    .courseContent {
-      flex-direction: column;
-      align-items: center;
-      .lessons {
-        width: 100%;
-      }
+  .courseContent {
+    flex-direction: column;
+    align-items: center;
+
+    .lessons {
+      width: 100%;
     }
   }
 }
@@ -66,11 +71,13 @@
   width: 100%;
   padding: 10px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
   p {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     margin-top: 10px;
     max-width: 100%;
+    letter-spacing: 1px;
   }
 
   .info {
@@ -83,6 +90,7 @@
     align-items: center;
     font-size: 25px;
     padding: 10px;
+
     p {
       height: fit-content;
       margin: 0;
@@ -107,19 +115,20 @@
     width: 700px;
   }
 }
+
 @media (max-width: 1200px) {
   .description {
     width: 540px;
   }
 }
+
 @media (max-width: 1024px) {
-  .wrapper {
-    .courseContent {
-      .lessons {
-        overflow: visible;
-      }
+  .courseContent {
+    .lessons {
+      overflow: visible;
     }
   }
+
   .description {
     max-width: 100%;
     width: 100%;

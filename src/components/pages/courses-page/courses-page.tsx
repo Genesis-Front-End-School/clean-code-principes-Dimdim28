@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Error from "../../common/Error";
-import Preloader from '../../common/Preloader';
+
 import { useAppDispatch, useAppSelector } from '../../../hooks/appHooks';
 import { fetchCourses } from '../../../redux/courses/asyncActions';
 import {
@@ -10,15 +9,21 @@ import {
   selectError,
   selectStatus,
 } from '../../../redux/courses/selectors';
+import { selectTheme } from '@/redux/main/selectors';
 import { setCurrentPage } from '../../../redux/courses/slice';
+import { changeTheme } from '../../../redux/main/slice';
 
 import CourseCard from './components/CourseCard';
 import Pagination from './components/Pagination';
+import Error from "../../common/Error";
+import Preloader from '../../common/Preloader';
 
 import styles from './courses-page.module.scss';
 
 const CoursesPage = () => {
   const dispatch = useAppDispatch();
+  const theme = useAppSelector(selectTheme);
+
   const status = useAppSelector(selectStatus);
   const courses = useAppSelector(selectCourses);
   const current = useAppSelector(selectCurrentPage);
@@ -44,6 +49,15 @@ const CoursesPage = () => {
     );
   return (
     <div className={styles.wrapper}>
+      <div className={styles.header}>
+        <p>Dark mode:</p>
+        <label className={styles.switch}>
+          <input type="checkbox" onChange={() => {
+            dispatch(changeTheme())
+          }} checked={theme === 'dark'} />
+          <span className={styles.slider}></span>
+        </label>
+      </div>
       <div className={styles.cards}>
         {sortedCourses.map(course => (
           <CourseCard
