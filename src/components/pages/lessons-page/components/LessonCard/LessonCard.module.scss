@@ -4,6 +4,12 @@
   width: 240px;
   font-size: 20px;
   overflow: hidden;
+  background-color: black;
+  color: white;
+
+  p {
+    background-color: rgba(25, 118, 210, 0.6);
+  }
 
   .image {
     width: 240px;
@@ -14,7 +20,7 @@
 
 .wrapper {
   cursor: pointer;
-  box-shadow: 0 0 10px white;
+  border: 2px solid rgb(218, 218, 218);
 }
 
 .locked {
@@ -23,7 +29,7 @@
 }
 
 .active {
-  box-shadow: 0 0 10px blue;
+  border: 2px solid blue;
 }
 
 @media (max-width: 1440px) {

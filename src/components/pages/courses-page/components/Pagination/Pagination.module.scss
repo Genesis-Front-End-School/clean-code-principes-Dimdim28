@@ -4,14 +4,21 @@
   justify-content: center;
 }
 
-.wrapper {
+.wrapper,
+.darkWrapper {
   width: 100%;
   @include center();
+}
+
+.darkWrapper {
+  background-color: black;
+  color: white;
 }
 
 .buttons {
   @include center();
   padding: 10px 0;
+
   .button,
   .activeButton {
     border-radius: 50%;
@@ -22,17 +29,21 @@
     margin: 0 10px;
     cursor: pointer;
   }
+
   .button {
     transition: 0.2s;
     background-color: transparent;
+
     &:hover {
       background-color: #919191;
       color: white;
     }
+
     &:active {
       background-color: #aaaaaa;
     }
   }
+
   .activeButton {
     transition: 0.3s;
     background-color: #1976d2;
@@ -42,6 +53,7 @@
 
 @media (max-width: 576px) {
   .buttons {
+
     .button,
     .activeButton {
       width: 30px;

@@ -58,7 +58,7 @@ const CoursesPage = () => {
           <span className={styles.slider}></span>
         </label>
       </div>
-      <div className={styles.cards}>
+      <div className={theme === 'light' ? styles.cards : styles.darkCards}>
         {sortedCourses.map(course => (
           <CourseCard
             key={course.id}
