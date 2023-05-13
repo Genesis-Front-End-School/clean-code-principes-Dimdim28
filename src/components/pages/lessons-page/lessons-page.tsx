@@ -11,6 +11,7 @@ import {
   selectStatus,
 } from '../../..//redux/lessons/selectors';
 import { selectTheme } from '../../../redux/main/selectors';
+import { changeTheme } from '../../../redux/main/slice';
 
 import Error from '../../../components/common/Error';
 import Preloader from '../../..//components/common/Preloader';
@@ -32,11 +33,15 @@ const LessonsPage = () => {
   const [currentVideo, setCurrentVideo] = useState(0);
 
   const { asPath, isReady } = router;
+
   useEffect(() => {
     if (isReady) {
       dispatch(fetchLessons({ id: asPath.replace('/course/', '') }));
     }
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme && savedTheme !== theme) dispatch(changeTheme());
   }, [asPath, isReady, dispatch]);
+
   if (status === 'loading') return <Preloader />;
   if (status === 'error') return <Error text={error} />;
   const { link, previewImageLink, order, title } = lessons[currentVideo];

@@ -6,6 +6,9 @@
   overflow: hidden;
   background-color: black;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   p {
     background-color: rgba(25, 118, 210, 0.6);

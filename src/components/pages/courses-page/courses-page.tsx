@@ -22,7 +22,6 @@ import styles from './courses-page.module.scss';
 const CoursesPage = () => {
   const dispatch = useAppDispatch();
   const theme = useAppSelector(selectTheme);
-
   const status = useAppSelector(selectStatus);
   const courses = useAppSelector(selectCourses);
   const current = useAppSelector(selectCurrentPage);
@@ -30,13 +29,15 @@ const CoursesPage = () => {
   const [page, setPage] = useState(current);
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme && savedTheme !== theme) dispatch(changeTheme());
     if (!courses.length) dispatch(fetchCourses());
-  }, [dispatch, courses]);
+  }, [courses]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(setCurrentPage(page));
-  }, [page, dispatch]);
+  }, [page]);
 
   if (status === 'loading') return <Preloader />;
   if (status === 'error') return <Error text={error} />;
@@ -52,6 +53,7 @@ const CoursesPage = () => {
         <p>Dark mode:</p>
         <label className={styles.switch}>
           <input type="checkbox" onChange={() => {
+            localStorage.setItem('theme', theme === 'light' ? 'dark' : 'light')
             dispatch(changeTheme())
           }} checked={theme === 'dark'} />
           <span className={styles.slider}></span>
