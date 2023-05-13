@@ -1,14 +1,15 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-
+import { Provider } from 'react-redux';
 import '@testing-library/jest-dom';
 
 import LessonCard from './LessonCard';
 import { act } from 'react-dom/test-utils';
+import { store } from '../../../../../redux/store';
 
 describe('VideoCard component ', () => {
   it('renders correctly if this is current lesson', () => {
     render(
-      <LessonCard
+      <Provider store={store}> <LessonCard
         id=""
         title="first lesson"
         duration={564}
@@ -17,9 +18,9 @@ describe('VideoCard component ', () => {
         link="duyeryuier"
         status="unlocked"
         previewImageLink="vbnghgh"
-        setCurrentVideo={() => {}}
+        setCurrentVideo={() => { }}
         currentVideo={0}
-      />,
+      /></Provider>,
     );
 
     const element = document.querySelector('.active');
@@ -27,7 +28,7 @@ describe('VideoCard component ', () => {
   });
   it('renders correctly if lesson is locked', () => {
     render(
-      <LessonCard
+      <Provider store={store}> <LessonCard
         id=""
         title="first lesson"
         duration={564}
@@ -36,9 +37,9 @@ describe('VideoCard component ', () => {
         link="duyeryuier"
         status="locked"
         previewImageLink="vbnghgh"
-        setCurrentVideo={() => {}}
+        setCurrentVideo={() => { }}
         currentVideo={1}
-      />,
+      /></Provider>,
     );
 
     const element = document.querySelector('.locked');
@@ -47,7 +48,7 @@ describe('VideoCard component ', () => {
 
   it('renders correctly for other unlocked lessons', () => {
     render(
-      <LessonCard
+      <Provider store={store}><LessonCard
         id=""
         title="first lesson"
         duration={564}
@@ -56,9 +57,9 @@ describe('VideoCard component ', () => {
         link="duyeryuier"
         status="unlocked"
         previewImageLink="vbnghgh"
-        setCurrentVideo={() => {}}
+        setCurrentVideo={() => { }}
         currentVideo={4}
-      />,
+      /></Provider>,
     );
 
     const element = document.querySelector('.wrapper');
@@ -68,7 +69,7 @@ describe('VideoCard component ', () => {
   it('can set current wideo after click', () => {
     const setCurrentVideo = jest.fn((x) => x);
     render(
-      <LessonCard
+      <Provider store={store}> <LessonCard
         id=""
         title="first lesson"
         duration={564}
@@ -79,7 +80,7 @@ describe('VideoCard component ', () => {
         previewImageLink="vbnghgh"
         currentVideo={4}
         setCurrentVideo={setCurrentVideo}
-      />,
+      /></Provider>,
     );
     const card = screen.getByRole('card');
     act(() => fireEvent.click(card));
@@ -88,38 +89,38 @@ describe('VideoCard component ', () => {
 
   it('should test what goes into the state', () => {
     const setCurrentVideo = jest.fn((x) => x);
-    render( <LessonCard
-        id=""
-        title="first lesson"
-        duration={564}
-        order={5}
-        type=""
-        link="duyeryuier"
-        status="unlocked"
-        previewImageLink="vbnghgh"
-        currentVideo={4}
-        setCurrentVideo={setCurrentVideo}
-        hasError={true}
-      />);
-      const card = screen.getByAltText('errorLessonImage');
-      expect(card).toBeInTheDocument()
+    render(<Provider store={store}><LessonCard
+      id=""
+      title="first lesson"
+      duration={564}
+      order={5}
+      type=""
+      link="duyeryuier"
+      status="unlocked"
+      previewImageLink="vbnghgh"
+      currentVideo={4}
+      setCurrentVideo={setCurrentVideo}
+      hasError={true}
+    /></Provider>);
+    const card = screen.getByAltText('errorLessonImage');
+    expect(card).toBeInTheDocument()
   });
 
   it('should test what goes into the state', () => {
     const setCurrentVideo = jest.fn((x) => x);
-    render( <LessonCard
-        id="vccbvjgf"
-        title="uniquetitle"
-        duration={564}
-        order={5}
-        type=""
-        link="duyeryuier"
-        status="unlocked"
-        previewImageLink=""
-        currentVideo={4}
-        setCurrentVideo={setCurrentVideo}
-      />);
-      const card = screen.getByAltText('uniquetitle');
-      expect(card).toBeInTheDocument()
+    render(<Provider store={store}> <LessonCard
+      id="vccbvjgf"
+      title="uniquetitle"
+      duration={564}
+      order={5}
+      type=""
+      link="duyeryuier"
+      status="unlocked"
+      previewImageLink=""
+      currentVideo={4}
+      setCurrentVideo={setCurrentVideo}
+    /></Provider>);
+    const card = screen.getByAltText('uniquetitle');
+    expect(card).toBeInTheDocument()
   });
 });

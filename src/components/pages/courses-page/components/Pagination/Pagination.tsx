@@ -1,4 +1,7 @@
 import React, { useCallback } from 'react';
+import { useAppSelector } from '../../../../../hooks/appHooks';
+
+import { selectTheme } from '../../../../../redux/main/selectors';
 
 import styles from './Pagination.module.scss';
 
@@ -13,6 +16,9 @@ const Pagination: React.FC<PaginationProps> = ({
   setPage,
   totalPages,
 }) => {
+
+  const theme = useAppSelector(selectTheme);
+
   const changePage = useCallback(
     (num: number) => {
       if (num !== currentPage && num > 0 && num <= totalPages) setPage(num);
@@ -28,7 +34,7 @@ const Pagination: React.FC<PaginationProps> = ({
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className={theme === 'light' ? styles.wrapper : styles.darkWrapper}>
       <div className={styles.buttons}>
         <div
           className={styles.button}
