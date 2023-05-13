@@ -10,7 +10,7 @@ import {
   selectLessons,
   selectStatus,
 } from '../../..//redux/lessons/selectors';
-import { selectTheme } from '@/redux/main/selectors';
+import { selectTheme } from '../../../redux/main/selectors';
 
 import Error from '../../../components/common/Error';
 import Preloader from '../../..//components/common/Preloader';

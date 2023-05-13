@@ -8,7 +8,7 @@ import {
   selectError,
   selectStatus,
 } from '../../../redux/courses/selectors';
-import { selectTheme } from '@/redux/main/selectors';
+import { selectTheme } from '../../../redux/main/selectors';
 import { setCurrentPage } from '../../../redux/courses/slice';
 import { changeTheme } from '../../../redux/main/slice';
 

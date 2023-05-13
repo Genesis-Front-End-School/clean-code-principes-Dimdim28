@@ -3,10 +3,13 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import NotFoundPage from './notfound-page';
+import { store } from '../../../redux/store';
+import { Provider } from 'react-redux';
 
 describe('404 page component', () => {
   beforeEach(() => {
-    render(<NotFoundPage />);
+    render(<Provider store={store}>
+      <NotFoundPage /> </Provider>);
   });
   it('renders correctly', () => {
     expect(screen.getByText('Page not found')).toBeInTheDocument();

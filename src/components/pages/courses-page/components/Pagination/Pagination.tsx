@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { useAppSelector } from '@/hooks/appHooks';
+import { useAppSelector } from '../../../../../hooks/appHooks';
 
-import { selectTheme } from '@/redux/main/selectors';
+import { selectTheme } from '../../../../../redux/main/selectors';
 
 import styles from './Pagination.module.scss';
 

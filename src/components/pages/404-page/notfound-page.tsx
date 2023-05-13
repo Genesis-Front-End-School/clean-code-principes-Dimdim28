@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { useAppSelector } from '@/hooks/appHooks';
-import { selectTheme } from '@/redux/main/selectors';
+import { useAppSelector } from '../../../hooks/appHooks';
+import { selectTheme } from '../../../redux/main/selectors';
 
 import styles from './notfound-page.module.scss';
 

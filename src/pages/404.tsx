@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
-import { useAppSelector } from '@/hooks/appHooks';
+import { useAppSelector } from '../hooks/appHooks';
 
-import { selectTheme } from '@/redux/main/selectors';
+import { selectTheme } from '../redux/main/selectors';
 import NotFoundPage from "../components/pages/404-page";
 
 import styles from './404.module.scss';

@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import Hls from 'hls.js';
-import { useAppSelector } from '@/hooks/appHooks';
+import { useAppSelector } from '../../../../../hooks/appHooks';
 
-import { selectTheme } from '@/redux/main/selectors';
+import { selectTheme } from '../../../../../redux/main/selectors';
 
 import styles from './VideoCard.module.scss';
 

@@ -1,7 +1,7 @@
-import { useAppSelector } from '@/hooks/appHooks';
-import { selectTheme } from '@/redux/main/selectors';
+import { useAppSelector } from '../hooks/appHooks';
+import { selectTheme } from '../redux/main/selectors';
 
-import CoursesPage from '@/components/pages/courses-page/courses-page';
+import CoursesPage from '../components/pages/courses-page/courses-page';
 
 import colorStyles from '../styles/colorStyles.module.scss';
 
