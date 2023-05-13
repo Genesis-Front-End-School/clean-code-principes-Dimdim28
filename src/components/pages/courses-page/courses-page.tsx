@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
 import { useAppDispatch, useAppSelector } from '../../../hooks/appHooks';
 import { fetchCourses } from '../../../redux/courses/asyncActions';
 import {
