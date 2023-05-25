@@ -42,8 +42,8 @@ const LessonCard: React.FC<lessonCardprops> = ({
         status === 'locked' || !link
           ? styles.locked
           : order === currentVideo + 1
-          ? styles.active
-          : styles.wrapper
+            ? styles.active
+            : styles.wrapper
       }
       onClick={() => {
         setCurrentVideo(order - 1);
@@ -52,7 +52,7 @@ const LessonCard: React.FC<lessonCardprops> = ({
       <img
         onError={() => setError(true)}
         className={styles.image}
-        src={ (previewImageLink && order ) ? `${previewImageLink}/lesson-${order}.webp` : '/preview.jpg'}
+        src={(previewImageLink && order) ? `${previewImageLink}/lesson-${order}.webp` : '/preview.jpg'}
         alt={title}
       />
       <p>{title}</p>

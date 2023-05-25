@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import Error from "../../common/Error";
-import Preloader from '../../common/Preloader';
 import { useAppDispatch, useAppSelector } from '../../../hooks/appHooks';
 import { fetchCourses } from '../../../redux/courses/asyncActions';
 import {
@@ -10,15 +8,20 @@ import {
   selectError,
   selectStatus,
 } from '../../../redux/courses/selectors';
+import { selectTheme } from '../../../redux/main/selectors';
 import { setCurrentPage } from '../../../redux/courses/slice';
+import { changeTheme } from '../../../redux/main/slice';
 
 import CourseCard from './components/CourseCard';
 import Pagination from './components/Pagination';
+import Error from "../../common/Error";
+import Preloader from '../../common/Preloader';
 
 import styles from './courses-page.module.scss';
 
 const CoursesPage = () => {
   const dispatch = useAppDispatch();
+  const theme = useAppSelector(selectTheme);
   const status = useAppSelector(selectStatus);
   const courses = useAppSelector(selectCourses);
   const current = useAppSelector(selectCurrentPage);
@@ -26,13 +29,15 @@ const CoursesPage = () => {
   const [page, setPage] = useState(current);
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme && savedTheme !== theme) dispatch(changeTheme());
     if (!courses.length) dispatch(fetchCourses());
-  }, [dispatch, courses]);
+  }, [courses]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(setCurrentPage(page));
-  }, [page, dispatch]);
+  }, [page]);
 
   if (status === 'loading') return <Preloader />;
   if (status === 'error') return <Error text={error} />;
@@ -44,7 +49,17 @@ const CoursesPage = () => {
     );
   return (
     <div className={styles.wrapper}>
-      <div className={styles.cards}>
+      <div className={styles.header}>
+        <p>Dark mode:</p>
+        <label className={styles.switch}>
+          <input type="checkbox" onChange={() => {
+            localStorage.setItem('theme', theme === 'light' ? 'dark' : 'light')
+            dispatch(changeTheme())
+          }} checked={theme === 'dark'} />
+          <span className={styles.slider}></span>
+        </label>
+      </div>
+      <div className={theme === 'light' ? styles.cards : styles.darkCards}>
         {sortedCourses.map(course => (
           <CourseCard
             key={course.id}

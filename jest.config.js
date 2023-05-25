@@ -46,5 +46,7 @@ export default {
     '.prettierrc.js',
     'jest.setup.js',
     'index.tsx',
+    'src/redux/lessons/types.ts',
+    'src/redux/courses/types.ts',
 ]
 };

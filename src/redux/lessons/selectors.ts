@@ -1,4 +1,4 @@
-import { RootState } from '@/redux/store';
+import { RootState } from '../../redux/store';
 
 export const selectLessons = (state: RootState) => state.lessons.lessons;
 export const selectCourseInfo = (state: RootState) => state.lessons.courseInfo;

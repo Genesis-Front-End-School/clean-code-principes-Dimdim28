@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Rating } from '@mui/material';
 import { useRouter } from 'next/router';
-
-import Error from '../../../components/common/Error';
-import Preloader from '../../..//components/common/Preloader';
 import { useAppDispatch, useAppSelector } from '../../..//hooks/appHooks';
+
 import { fetchLessons } from '../../..//redux/lessons/asyncActions';
 import {
   selectCourseInfo,
@@ -12,7 +10,11 @@ import {
   selectLessons,
   selectStatus,
 } from '../../..//redux/lessons/selectors';
+import { selectTheme } from '../../../redux/main/selectors';
+import { changeTheme } from '../../../redux/main/slice';
 
+import Error from '../../../components/common/Error';
+import Preloader from '../../..//components/common/Preloader';
 import LessonCard from './components/LessonCard';
 import VideoCard from './components/VideoCard';
 
@@ -20,6 +22,7 @@ import styles from './lessons-page.module.scss';
 
 const LessonsPage = () => {
   const dispatch = useAppDispatch();
+  const theme = useAppSelector(selectTheme);
   const router = useRouter();
   const status = useAppSelector(selectStatus);
   const lessons = useAppSelector(selectLessons)
@@ -30,16 +33,20 @@ const LessonsPage = () => {
   const [currentVideo, setCurrentVideo] = useState(0);
 
   const { asPath, isReady } = router;
+
   useEffect(() => {
     if (isReady) {
       dispatch(fetchLessons({ id: asPath.replace('/course/', '') }));
     }
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme && savedTheme !== theme) dispatch(changeTheme());
   }, [asPath, isReady, dispatch]);
+
   if (status === 'loading') return <Preloader />;
   if (status === 'error') return <Error text={error} />;
   const { link, previewImageLink, order, title } = lessons[currentVideo];
   return (
-    <div className={styles.wrapper}>
+    <div className={theme === 'light' ? styles.wrapper : styles.darkWrapper}>
       <div className={styles.courseInfo}>
         <p
           className={styles.back}
