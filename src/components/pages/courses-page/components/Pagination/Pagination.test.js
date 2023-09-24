@@ -1,13 +1,15 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-
+import { Provider } from 'react-redux';
 import '@testing-library/jest-dom';
-
-import Pagination from './Pagination';
 import { act } from 'react-dom/test-utils';
+
+
+import { store } from '../../../../../redux/store';
+import Pagination from './Pagination';
 
 describe('Pagination component ', () => {
   it('renders with all buttons', () => {
-    render(<Pagination totalPages={3} currentPage={1} />);
+    render(<Provider store={store}><Pagination totalPages={3} currentPage={1} /></Provider>);
     expect(screen.getByText('<')).toBeInTheDocument();
     expect(screen.getByText('1')).toBeInTheDocument();
     expect(screen.getByText('2')).toBeInTheDocument();
@@ -18,7 +20,7 @@ describe('Pagination component ', () => {
 
   it('should call setState after clicking next page button if we have more pages', () => {
     const setPage = jest.fn((x) => x);
-    render(<Pagination totalPages={3} currentPage={1} setPage={setPage} />);
+    render(<Provider store={store}><Pagination totalPages={3} currentPage={1} setPage={setPage} /></Provider>);
 
     const next = screen.getByText('>');
     act(() => fireEvent.click(next));
@@ -27,7 +29,7 @@ describe('Pagination component ', () => {
 
   it('shouldn`t call setState after clicking next page button if we have not more pages', () => {
     const setPage = jest.fn((x) => x);
-    render(<Pagination totalPages={3} currentPage={3} setPage={setPage} />);
+    render(<Provider store={store}><Pagination totalPages={3} currentPage={3} setPage={setPage} /></Provider>);
 
     const next = screen.getByText('>');
     act(() => fireEvent.click(next));
@@ -36,7 +38,7 @@ describe('Pagination component ', () => {
 
   it('should call setState after clicking prev page button if we have more pages', () => {
     const setPage = jest.fn((x) => x);
-    render(<Pagination totalPages={3} currentPage={2} setPage={setPage} />);
+    render(<Provider store={store}><Pagination totalPages={3} currentPage={2} setPage={setPage} /></Provider>);
 
     const prev = screen.getByText('<');
     act(() => fireEvent.click(prev));
@@ -45,7 +47,7 @@ describe('Pagination component ', () => {
 
   it('shouldn`t call setState after clicking prev page button if we have not more pages', () => {
     const setPage = jest.fn((x) => x);
-    render(<Pagination totalPages={3} currentPage={1} setPage={setPage} />);
+    render(<Provider store={store}><Pagination totalPages={3} currentPage={1} setPage={setPage} /></Provider>);
 
     const prev = screen.getByText('<');
     act(() => fireEvent.click(prev));
@@ -54,7 +56,7 @@ describe('Pagination component ', () => {
 
   it('should call setState after clicking page button if we are not on it already', () => {
     const setPage = jest.fn((x) => x);
-    render(<Pagination totalPages={4} currentPage={1} setPage={setPage} />);
+    render(<Provider store={store}><Pagination totalPages={4} currentPage={1} setPage={setPage} /></Provider>);
 
     const second = screen.getByText('2');
     const third = screen.getByText('3');
@@ -70,7 +72,7 @@ describe('Pagination component ', () => {
 
   it('shouldn`t call setState after clicking prev page button if we are already on this page', () => {
     const setPage = jest.fn((x) => x);
-    render(<Pagination totalPages={4} currentPage={1} setPage={setPage} />);
+    render(<Provider store={store}><Pagination totalPages={4} currentPage={1} setPage={setPage} /></Provider>);
 
     const first = screen.getByText('1');
     act(() => fireEvent.click(first));

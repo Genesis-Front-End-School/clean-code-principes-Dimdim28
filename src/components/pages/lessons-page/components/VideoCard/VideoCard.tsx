@@ -1,7 +1,11 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import Hls from 'hls.js';
+import { useAppSelector } from '../../../../../hooks/appHooks';
+
+import { selectTheme } from '../../../../../redux/main/selectors';
 
 import styles from './VideoCard.module.scss';
+
 interface VideoCardProps {
   src: string;
   title: string;
@@ -10,6 +14,7 @@ interface VideoCardProps {
 
 const VideoCard: React.FC<VideoCardProps> = ({ src, title, poster }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const theme = useAppSelector(selectTheme);
 
   const setCurrentTime = () => {
     localStorage.setItem(src, String(videoRef.current.currentTime));
@@ -49,7 +54,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, poster }) => {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={theme === 'light' ? styles.wrapper : styles.darkWrapper}>
       {src ? (
         <>
           <video
