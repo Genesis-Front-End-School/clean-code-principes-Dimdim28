@@ -1,6 +1,7 @@
 @mixin smallVideoWrapper($deviceWidth, $height) {
   @media (max-width: $deviceWidth) {
     .wrapper {
+
       .notFound,
       .video {
         height: $height;
@@ -14,11 +15,17 @@
   width: 100%;
   text-align: right;
   font-weight: 600;
+  letter-spacing: 2px;
 }
 
-.wrapper {
+.wrapper,
+.darkWrapper {
   padding: 10px;
   max-height: 100%;
+}
+
+.darkWrapper .description {
+  color: white;
 }
 
 .title {
@@ -26,6 +33,7 @@
   background-color: #1976d2;
   color: white;
   font-size: 25px;
+  letter-spacing: 2px;
 }
 
 .video {
@@ -44,11 +52,13 @@
 }
 
 @media (max-width: 1560px) {
+
   .notFound,
   .video,
   .title {
     width: 900px;
   }
+
   .video,
   .notFound {
     height: 500px;
@@ -56,11 +66,13 @@
 }
 
 @media (max-width: 1500px) {
+
   .notFound,
   .video,
   .title {
     width: 800px;
   }
+
   .video,
   .notFound {
     height: 425px;
@@ -68,11 +80,13 @@
 }
 
 @media (max-width: 1440px) {
+
   .notFound,
   .video,
   .title {
     width: 700px;
   }
+
   .video,
   .notFound {
     height: 395px;
@@ -80,11 +94,13 @@
 }
 
 @media (max-width: 1200px) {
+
   .notFound,
   .video {
     width: 540px;
     height: 300px;
   }
+
   .title {
     width: 540px;
     font-size: 23px;
@@ -95,12 +111,14 @@
   .wrapper {
     max-width: 100%;
     width: 100%;
+
     .notFound,
     .video {
       width: 100%;
       height: 550px;
       object-fit: fill;
     }
+
     .title {
       width: 100%;
     }
