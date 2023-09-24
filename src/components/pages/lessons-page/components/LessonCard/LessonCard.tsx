@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import styles from './LessonCard.module.scss';
 
@@ -16,6 +16,7 @@ interface lessonCardprops {
   };
   setCurrentVideo: React.Dispatch<React.SetStateAction<number>>;
   currentVideo: number;
+  hasError?: boolean;
 }
 
 const LessonCard: React.FC<lessonCardprops> = ({
@@ -26,16 +27,17 @@ const LessonCard: React.FC<lessonCardprops> = ({
   link,
   setCurrentVideo,
   currentVideo,
+  hasError
 }) => {
-  const [error, setError] = useState(false);
+  const [error, setError] = React.useState(hasError || false);
   if (error)
     return (
       <div className={styles.wrapper} style={{ cursor: 'auto' }}>
-        <img className={styles.image} src={'/404.png'} alt={'error'} />
+        <img className={styles.image} src={'/404.png'} alt={'errorLessonImage'} />
       </div>
     );
   return (
-    <div
+    <div role="card"
       className={
         status === 'locked' || !link
           ? styles.locked
@@ -50,7 +52,7 @@ const LessonCard: React.FC<lessonCardprops> = ({
       <img
         onError={() => setError(true)}
         className={styles.image}
-        src={`${previewImageLink}/lesson-${order}.webp` || '/preview.jpg'}
+        src={ (previewImageLink && order ) ? `${previewImageLink}/lesson-${order}.webp` : '/preview.jpg'}
         alt={title}
       />
       <p>{title}</p>

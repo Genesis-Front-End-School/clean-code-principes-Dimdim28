@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Rating } from '@mui/material';
 import { useRouter } from 'next/router';
 
-import Error from '@/components/common/Error';
-import Preloader from '@/components/common/Preloader';
-import { useAppDispatch, useAppSelector } from '@/hooks/appHooks';
-import { fetchLessons } from '@/redux/lessons/asyncActions';
+import Error from '../../../components/common/Error';
+import Preloader from '../../..//components/common/Preloader';
+import { useAppDispatch, useAppSelector } from '../../..//hooks/appHooks';
+import { fetchLessons } from '../../..//redux/lessons/asyncActions';
 import {
   selectCourseInfo,
   selectError,
   selectLessons,
   selectStatus,
-} from '@/redux/lessons/selectors';
+} from '../../..//redux/lessons/selectors';
 
 import LessonCard from './components/LessonCard';
 import VideoCard from './components/VideoCard';

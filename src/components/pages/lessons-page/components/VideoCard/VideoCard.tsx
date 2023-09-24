@@ -9,14 +9,14 @@ interface VideoCardProps {
 }
 
 const VideoCard: React.FC<VideoCardProps> = ({ src, title, poster }) => {
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const setCurrentTime = () => {
-    localStorage.setItem(src, videoRef.current.currentTime);
+    localStorage.setItem(src, String(videoRef.current.currentTime));
   };
   const getCurrentTime = useCallback(() => {
     if (videoRef.current)
-      videoRef.current.currentTime = localStorage.getItem(src) || 0;
+      videoRef.current.currentTime = Number(localStorage.getItem(src)) || 0;
   }, [src]);
 
   useEffect(() => {
@@ -30,11 +30,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, poster }) => {
   }, [videoRef, src, getCurrentTime]);
 
   useEffect(() => {
-    const handleKeyDown = (event: {
-      ctrlKey: any;
-      key: string;
-      preventDefault: () => void;
-    }) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       const current = videoRef.current;
       if (event.key === '0' && current?.playbackRate) {
         event.preventDefault();
