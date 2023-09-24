@@ -1,0 +1,76 @@
+.wrapper,
+.locked,
+.active {
+  width: 240px;
+  font-size: 20px;
+  overflow: hidden;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  p {
+    background-color: rgba(25, 118, 210, 0.6);
+  }
+
+  .image {
+    width: 240px;
+  }
+
+  text-align: center;
+}
+
+.wrapper {
+  cursor: pointer;
+  border: 2px solid rgb(218, 218, 218);
+}
+
+.locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.active {
+  border: 2px solid blue;
+}
+
+@media (max-width: 1440px) {
+
+  .wrapper,
+  .active,
+  .locked {
+    width: 200px;
+
+    .image {
+      width: 200px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .wrapper,
+  .active,
+  .locked {
+    width: 300px;
+
+    .image {
+      width: 300px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+
+  .wrapper,
+  .active,
+  .locked {
+    width: 100%;
+    text-align: center;
+
+    .image {
+      width: 100%;
+    }
+  }
+}
